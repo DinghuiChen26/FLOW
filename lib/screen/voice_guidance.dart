@@ -1,5 +1,6 @@
 //import 'dart:ffi';
 
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flow_app/providers/firebase.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -34,6 +35,8 @@ class _GuidancePageState extends State<GuidancePage> {
   late OpenAI openAI;
   bool _isLoading = false; // Add this line to track the loading state
   bool _isTextFieldEnabled = true;
+  FirebaseDatabase database = FirebaseDatabase.instance;
+  DatabaseReference ref = FirebaseDatabase.instance.ref();
 
   //ChatCTResponse? mResponse;
   @override
@@ -45,6 +48,15 @@ class _GuidancePageState extends State<GuidancePage> {
     );
     jplayer = AudioPlayer();
     super.initState();
+  }
+
+  Future<void> PromptToDatabase(String prompt) async {
+    // Define a reference to the location where you want to save the image URL
+    DatabaseReference pRef = database.reference().child('latestPrompt');
+
+    // Set the value
+    await pRef.set(prompt);
+    print("Prompt saved to database");
   }
 
   Future<String?> _chatGpt3Example(String myPrompt, int time) async {
@@ -59,6 +71,7 @@ class _GuidancePageState extends State<GuidancePage> {
     ], model: GptTurboChatModel(), maxToken: token_limit);
 
     try {
+      
       final response = await openAI.onChatCompletion(request: request);
       if (response != null && response.choices.isNotEmpty) {
         return response.choices.first.message?.content;
@@ -70,6 +83,7 @@ class _GuidancePageState extends State<GuidancePage> {
   }
 
   String prompt_prep(String userInput, int time) {
+    PromptToDatabase(userInput);
     // Pre-formatted prompt template
     String template =
         """Please provide a guided meditation script in SSML format that lasts for $time minutes. The meditation should emphasize the following themes: $userInput. Ensure the script includes appropriate pauses and repetitions to extend the duration. Remember to use SSML tags like <speak>, <break>, and <emphasis> to structure the content.""";

@@ -43,6 +43,10 @@ class _MyHomePageState extends State<MyHomePage> {
   bool _isTextFieldEnabled = true;
 
   Future<String> fetchImageFromAPI(String prompt) async {
+    // final promptProvider = Provider.of<PromptProvider>(context, listen: false);
+
+    // promptProvider.updatePrompt(prompt);
+
     final url =
         "https://6cac3gr7opzffdhsul272khe6y0bvhaf.lambda-url.eu-west-2.on.aws/";
     final response = await http.post(
@@ -225,6 +229,11 @@ class _MyHomePageState extends State<MyHomePage> {
                             _isTextFieldEnabled = false;
                           });
                           try {
+                            final promptProvider = Provider.of<PromptProvider>(
+                                context,
+                                listen: false);
+
+                            promptProvider.updatePrompt(prompt);
                             String result = await fetchImageFromAPI(prompt);
                             img_path = await downloadImage(result);
 
@@ -235,6 +244,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
                             // Write the image URL to Firebase Realtime Database
                             await writeToDatabase(firebaseUrl);
+                            final imageURLProvider =
+                                Provider.of<ImageURLProvider>(context,
+                                    listen: false);
+
+                            imageURLProvider.updateURL(firebaseUrl);
 
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>

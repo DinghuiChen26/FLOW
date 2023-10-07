@@ -1,3 +1,5 @@
+import 'package:flow_app/screen/login.dart';
+import 'package:flow_app/screen/session_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -12,25 +14,29 @@ class WebViewPage extends StatefulWidget {
 }
 
 class _WebViewPageState extends State<WebViewPage> {
-  late final jplayer; // Create a player
+  late final AudioPlayer jplayer; // Create a player
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
-    final audioURLProvider =
-        Provider.of<AudioURLProvider>(context, listen: false);
     jplayer = AudioPlayer();
-    final duration = await jplayer.setUrl(audioURLProvider.audioURL);
-    jplayer.play();
-    // Play the audio after a delay of 10 seconds
-    // Future.delayed(Duration(seconds: 10), () async {
-    //   await audioPlayer.play(UrlSource(audioURLProvider.audioURL));
-    // });
+
+    // Create a delay, then execute your asynchronous code
+    Future.delayed(Duration(seconds: 10), () async {
+      final audioURLProvider =
+          Provider.of<AudioURLProvider>(context, listen: false);
+      try {
+        final duration = await jplayer.setUrl(audioURLProvider.audioURL);
+        jplayer.play();
+      } catch (e) {
+        print('Failed to play audio: $e');
+      }
+    });
   }
 
   @override
-  void dispose() async {
-    await jplayer.stop();
+  void dispose() {
+    jplayer.dispose();
     super.dispose();
   }
 
@@ -44,19 +50,34 @@ class _WebViewPageState extends State<WebViewPage> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        body: WebView(
-          initialUrl: 'https://flow-43f6c.web.app/',
-          javascriptMode: JavascriptMode.unrestricted,
-          navigationDelegate: (NavigationRequest request) {
-            if (request.url.startsWith('https://flow-43f6c.web.app/')) {
-              return NavigationDecision.navigate;
+        body: GestureDetector(
+          onHorizontalDragEnd: (details) {
+            // Check if the swipe is a left swipe
+            if (details.primaryVelocity! < 0) {
+              // Navigate to StartPage
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => StartPage()),
+              );
             }
-            return NavigationDecision.prevent;
           },
+          child: WebView(
+            initialUrl: 'https://flow-43f6c.web.app/',
+            javascriptMode: JavascriptMode.unrestricted,
+            navigationDelegate: (NavigationRequest request) {
+              if (request.url.startsWith('https://flow-43f6c.web.app/')) {
+                return NavigationDecision.navigate;
+              }
+              return NavigationDecision.prevent;
+            },
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.pop(context); // Pop back to the previous screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ImageCardPage()),
+            );
           },
           child: Icon(Icons.arrow_back, color: Colors.white),
           backgroundColor: Colors.blue,

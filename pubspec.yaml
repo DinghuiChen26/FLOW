@@ -49,6 +49,7 @@ dependencies:
   firebase_auth: ^4.10.0
   provider: ^6.0.5
   just_audio: ^0.9.35
+  sensors_plus: ^3.0.3
 
 dev_dependencies:
   flutter_test:

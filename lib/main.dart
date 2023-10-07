@@ -17,6 +17,7 @@ import 'screen/voice_guidance.dart';
 import 'screen/login.dart';
 import 'providers/firebase.dart'; // Make sure this import path is correct
 import 'package:provider/provider.dart';
+import 'screen/session_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,12 +25,10 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => AudioURLProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => ImageURLProvider(),
-        ),
+        ChangeNotifierProvider(create: (context) => AudioURLProvider()),
+        ChangeNotifierProvider(create: (context) => ImageURLProvider()),
+        ChangeNotifierProvider(create: (context) => PromptProvider()),
+        // ... other providers
       ],
       child: MyApp(),
     ),
