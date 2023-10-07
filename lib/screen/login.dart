@@ -10,23 +10,23 @@ import 'dart:math';
 import 'package:firebase_database/firebase_database.dart';
 
 class StartPage extends StatelessWidget {
-  Future<void> uploadRandomNumberToFirebase(String randomNumber) async {
-    final databaseReference = FirebaseDatabase.instance.reference();
-    await databaseReference
-        .child('randomNumbers')
-        .push()
-        .set({'number': randomNumber});
-  }
+  // Future<void> uploadRandomNumberToFirebase(String randomNumber) async {
+  //   final databaseReference = FirebaseDatabase.instance.reference();
+  //   await databaseReference
+  //       .child('randomNumbers')
+  //       .push()
+  //       .set({'number': randomNumber});
+  // }
 
-  String generateRandomNumber() {
-    final random = Random();
-    final randomNumber = random.nextInt(900000) +
-        100000; // Generates a random number between 100000 and 999999
+  // String generateRandomNumber() {
+  //   final random = Random();
+  //   final randomNumber = random.nextInt(900000) +
+  //       100000; // Generates a random number between 100000 and 999999
     
-    //print(randomeNumber.toString());
+  //   //print(randomeNumber.toString());
 
-    return randomNumber.toString();
-  }
+  //   return randomNumber.toString();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +56,8 @@ class StartPage extends StatelessWidget {
                   elevation: 5.0,
                 ),
                 onPressed: () async {
-                  final randomNumber = generateRandomNumber();
-                  await uploadRandomNumberToFirebase(randomNumber);
+                  // final randomNumber = generateRandomNumber();
+                  // await uploadRandomNumberToFirebase(randomNumber);
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) =>
