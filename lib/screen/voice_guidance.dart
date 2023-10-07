@@ -15,6 +15,8 @@ import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:provider/provider.dart';
 import 'webview_page.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class GuidancePage extends StatefulWidget {
   @override
