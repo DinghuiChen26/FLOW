@@ -12,3 +12,16 @@ class AudioURLProvider with ChangeNotifier {
     notifyListeners();
   }
 }
+
+
+class ImageURLProvider with ChangeNotifier {
+  String _imageURL = '';
+
+  String get audioURL => _imageURL;
+
+  void updateURL(String newURL) {
+    _imageURL = newURL;
+    print("updated");
+    notifyListeners();
+  }
+}
