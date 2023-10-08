@@ -337,29 +337,17 @@ class _GuidancePageState extends State<GuidancePage> {
                   ],
                 ),
                 const SizedBox(height: 20.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    VoiceOption(
-                      label: "2 Minute",
-                      isSelected: _time == 1,
-                      onTap: () async {
-                        setState(() {
-                          _time = 1;
-                        });
-                      },
-                    ),
-                    const SizedBox(width: 20.0),
-                    VoiceOption(
-                      label: "3 Minutes",
-                      isSelected: _time == 3,
-                      onTap: () async {
-                        setState(() {
-                          _time = 3;
-                        });
-                      },
-                    ),
-                  ],
+                Slider(
+                  value: _time.toDouble(),
+                  min: 1,
+                  max: 10,
+                  divisions: 9,
+                  label: '$_time minutes',
+                  onChanged: (double value) {
+                    setState(() {
+                      _time = value.round();
+                    });
+                  },
                 ),
                 const SizedBox(
                   height: 20,
