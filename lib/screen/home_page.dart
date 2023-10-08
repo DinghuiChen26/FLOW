@@ -2,7 +2,6 @@
 
 import 'dart:convert';
 import 'dart:io';
-//TODO next button future wait for permission
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import 'package:webview_flutter/webview_flutter.dart';
