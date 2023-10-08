@@ -48,7 +48,7 @@ class _GuidancePageState extends State<GuidancePage> {
   @override
   void initState() {
     openAI = OpenAI.instance.build(
-      token: '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',
+      token: '',
       baseOption: HttpSetup(receiveTimeout: const Duration(seconds: 30)),
       enableLog: true,
     );
@@ -153,9 +153,9 @@ class _GuidancePageState extends State<GuidancePage> {
       {
         "type": "service_account",
         "project_id": "flow-399713",
-        "private_key_id": "aac28a6a1f98ec9e3a60290a360d37c45de7b834",
+        "private_key_id": "",
         "private_key":
-            "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDvOn+E2/zwe7C0\nXYH4IEnSJDGqegi1HNvM0ZN73LsdEdybCDMZGEtccFNZt9ZI/PFuX4EXQr0s3WWK\n/WVuJbyJzYf52doaxph9iqe1fiyk7BLlsUo5Aiq1l6HVHW92VxzanRFsY4dshGfa\nDiwvSY3RJWrC66JACZKp6PNnpfs8D/NaCU8cEMcw/UuDseZa/t7WoJBeQYcxk2xv\nwiYwB7P78hb+RFm4OQ0QoT42Mp9xoGzBAzf+DjtTolnyEacAyIM+21YD9n2R7Zn2\n7WjN3BmmwLt2gUNIkCJNKjU1Ydh/qrKNv664ldE9+bMlhYQNxBPAFaMUsJvCInhz\nFRHdbEqLAgMBAAECggEADV/n4TWrXoaLyomvyn+DoQwE+tL3yahjYYAWDsa4b1eg\nTcqXkL+a9wAQqONuR4ZcuR79yJ8ilG+MTcj88ruJXuruvzk+yGByBhLKbYswU8gf\nBlhzHdzRJnXjxlZu9N7J7i752mV2HMsKQ1angb1LAHZnEZ6643mliXpMoW7WLPVb\nps84ZlIsrpw8sUkPDZnWxMnS/TGMBnkg5eLwaaALoDEUvCGfldcjExuEbcP7Ywhh\nkjZxIEraRPjf5SQTvMr+iZZ+fVKzIvYPX/54XKXUTJ/bk5adtXSCmWmL6WdP9vAy\nhTebCK538LRzUfI/Hc/NaPXsey8FZ20i8rKAKMT5AQKBgQD+q4LHYjWTzqmCPcLA\nVpfc1OrCjA+ewlV7wMuJOe6hSduDo8+/mEEQSaGvMzDVG1Lu0+//X93MAlZ4sxU5\nNDdFwg1YH0sBDdKBozHbWdf4vZjDo3s0Sobxp387zqWJGPQDaXU+XX9tyb3j4+tf\nFUJ2r5qD/e5Cf+9+hSAwrtD6UwKBgQDweleiKyTFxlDCvSXm8wM1hrMGWAbIkqeg\nQ2Bft3acLmfWn1I/DZzQdpuJ5DxmWoLUYeUnYPxF96T43FU9qx5sHoyWx4VyDzOG\nk5qMrSfV1vqtzUfsnJ+LV68S6C/q6X8++RpZ+kimlgXedcEyYaoxIiJtQ8oiB+P/\nh9i7gPkX6QKBgQCTGr8QLMqF9nozoTk9oMdX6CUy+3SKX/bA5Tysp6oPwHnsMFNw\neKIcpmueqBMtBfuBuSqIePfFQBRy4/7+bAsBYHYU0P6iPTm7aGkEK4F1TQ9Q8r3Y\nFrScIgR8p4E3EBLjZaczvw48fKwTVzQ+WClsJUM7uxJFl2Df1EYj2NcdwQKBgFDN\newa1onyF/3r/3W11uF1S7nKyP01D4ek62nYvCj6+ZQu7qwIey9NMF0VFGHp37T/5\nyOrrbrj/1kH8nvPCvM0tkqXTUuaZbwHINQUR5bG3s7GUqZc6pW1HwD8FH5y6apQ5\nVX5oV+MJw90VCh6orGwoARNf1NqMdjLVbaDLXGeJAoGAApFiaejNMvZpNaHLXB2T\ni7Ed1faBpQXou8HS2Zd4dJ+OrYv/Y8Y+ac+1WhCrOp8fAGYCaEtpDVLnVVcxTq1x\nsd8lrtTimYiMURWmqE9wEYQDPvbn8yUNptkXLCdL93HVYVnPJDblv7k9PGl1LCOV\nyQdS6wMltOczhwqZQwGA+cs=\n-----END PRIVATE KEY-----\n",
+            "",
         "client_email": "cheng-828@flow-399713.iam.gserviceaccount.com",
         "client_id": "109644553059201697198",
         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
