@@ -1,5 +1,6 @@
+// ignore_for_file: library_private_types_in_public_api, unused_local_variable, avoid_print, use_build_context_synchronously, sort_child_properties_last
+
 import 'package:flow_app/screen/login.dart';
-import 'package:flow_app/screen/image_card.dart';
 import 'package:flow_app/screen/session_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,8 @@ import 'dart:async';
 import '../providers/firebase.dart';
 
 class WebViewPage extends StatefulWidget {
+  const WebViewPage({super.key});
+
   @override
   _WebViewPageState createState() => _WebViewPageState();
 }
@@ -23,7 +26,7 @@ class _WebViewPageState extends State<WebViewPage> {
     jplayer = AudioPlayer();
 
     // Create a delay, then execute your asynchronous code
-    Future.delayed(Duration(seconds: 10), () async {
+    Future.delayed(const Duration(seconds: 10), () async {
       final audioURLProvider =
           Provider.of<AudioURLProvider>(context, listen: false);
       try {
@@ -58,7 +61,7 @@ class _WebViewPageState extends State<WebViewPage> {
               // Navigate to StartPage
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => StartPage()),
+                MaterialPageRoute(builder: (context) => const StartPage()),
               );
             }
           },
@@ -78,13 +81,13 @@ class _WebViewPageState extends State<WebViewPage> {
             await jplayer.stop();
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SessionsGridPage()),
+              MaterialPageRoute(builder: (context) => const SessionsGridPage()),
             );
           },
-          child: Icon(Icons.arrow_back, color: Colors.white),
+          child: const Icon(Icons.arrow_back, color: Colors.white),
           backgroundColor: Colors.blue,
           mini: true, // Set to false if you want a regular sized FAB
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(16.0)),
           ),
         ),

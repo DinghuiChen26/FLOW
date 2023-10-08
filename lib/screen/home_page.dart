@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, library_private_types_in_public_api, prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables, non_constant_identifier_names, deprecated_member_use, avoid_print, use_build_context_synchronously
+
 import 'dart:convert';
 import 'dart:io';
 //TODO next button future wait for permission
@@ -20,6 +22,8 @@ import '../providers/firebase.dart';
 import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -45,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<String> fetchImageFromAPI(String prompt) async {
 
 
-    final url =
+    const url =
         "https://6cac3gr7opzffdhsul272khe6y0bvhaf.lambda-url.eu-west-2.on.aws/";
     final response = await http.post(
       Uri.parse(url),

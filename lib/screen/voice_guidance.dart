@@ -1,11 +1,13 @@
 //import 'dart:ffi';
 
+// ignore_for_file: library_private_types_in_public_api, prefer_final_fields, prefer_typing_uninitialized_variables, deprecated_member_use, avoid_print, non_constant_identifier_names, body_might_complete_normally_nullable, no_leading_underscores_for_local_identifiers, unused_local_variable, use_build_context_synchronously
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flow_app/providers/firebase.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
-import 'package:intl/intl.dart'; // Import the intl package
+// import 'package:intl/intl.dart'; // Import the intl package
 import 'package:path_provider/path_provider.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:googleapis/texttospeech/v1.dart' as tts;
@@ -19,6 +21,8 @@ import 'package:just_audio/just_audio.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class GuidancePage extends StatefulWidget {
+  const GuidancePage({super.key});
+
   @override
   _GuidancePageState createState() => _GuidancePageState();
 }
@@ -36,7 +40,7 @@ class _GuidancePageState extends State<GuidancePage> {
   FirebaseStorage storage = FirebaseStorage.instance;
   late OpenAI openAI;
   bool _isLoading = false; // Add this line to track the loading state
-  bool _isTextFieldEnabled = true;
+   bool _isTextFieldEnabled = true;
   FirebaseDatabase database = FirebaseDatabase.instance;
   DatabaseReference ref = FirebaseDatabase.instance.ref();
 
@@ -103,7 +107,7 @@ class _GuidancePageState extends State<GuidancePage> {
       token_limit = 2000;
     }
     final request = ChatCompleteText(messages: [
-      Messages(role: Role.user, content: myPrompt!),
+      Messages(role: Role.user, content: myPrompt),
     ], model: GptTurboChatModel(), maxToken: token_limit);
 
     try {
@@ -143,8 +147,6 @@ class _GuidancePageState extends State<GuidancePage> {
       voice_sel = 'F';
     }
     // Define the API endpoint
-    final url =
-        Uri.parse("https://texttospeech.googleapis.com/v1/text:synthesize");
 
     // Service account credentials
     final _credentials = ServiceAccountCredentials.fromJson(
@@ -183,7 +185,7 @@ class _GuidancePageState extends State<GuidancePage> {
     // Define the voice selection
     final voice = tts.VoiceSelectionParams(
       languageCode: 'en-US',
-      name: 'en-US-Neural2-$voice_sel', //TODO: F
+      name: 'en-US-Neural2-$voice_sel', 
       ssmlGender: 'FEMALE',
     );
 
@@ -222,7 +224,6 @@ class _GuidancePageState extends State<GuidancePage> {
     return downloadUrl;
 
     // Close the auth client
-    _authClient.close();
   }
 
   @override
@@ -247,8 +248,7 @@ class _GuidancePageState extends State<GuidancePage> {
                   children: hintTags.map((tag) {
                     return InkWell(
                       onTap: () {
-                        _controller.text += tag +
-                            ", "; // update the text box with the clicked tag
+                        _controller.text += "$tag, "; // update the text box with the clicked tag
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
@@ -416,7 +416,7 @@ class VoiceOption extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  VoiceOption({
+  const VoiceOption({super.key, 
     required this.label,
     required this.isSelected,
     required this.onTap,

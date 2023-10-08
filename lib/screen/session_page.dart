@@ -1,15 +1,19 @@
+// ignore_for_file: library_private_types_in_public_api, deprecated_member_use
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flow_app/screen/home_page.dart';
-import 'package:flow_app/screen/voice_guidance.dart';
+// import 'package:flow_app/screen/voice_guidance.dart';
 import 'package:flow_app/screen/webview_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+// import 'package:webview_flutter/webview_flutter.dart';
 
 import '../providers/firebase.dart';
 
 class SessionsGridPage extends StatefulWidget {
+  const SessionsGridPage({super.key});
+
   @override
   _SessionsGridPageState createState() => _SessionsGridPageState();
 }
@@ -47,17 +51,17 @@ class _SessionsGridPageState extends State<SessionsGridPage> {
                   stream: firestore.collection('sessions').snapshots(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
+                      return const Center(child: CircularProgressIndicator());
                     }
 
                     if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                      return Center(child: Text('No sessions found.'));
+                      return const Center(child: Text('No sessions found.'));
                     }
 
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2, // number of columns
                           childAspectRatio: 0.8,
                           crossAxisSpacing:
@@ -73,7 +77,7 @@ class _SessionsGridPageState extends State<SessionsGridPage> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MyHomePage()),
+                                      builder: (context) => const MyHomePage()),
                                 );
                               },
                               child: Card(
@@ -81,7 +85,7 @@ class _SessionsGridPageState extends State<SessionsGridPage> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10.0),
                                 ),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.add,
                                     size: 48,
@@ -100,10 +104,12 @@ class _SessionsGridPageState extends State<SessionsGridPage> {
                                   database.reference().child('latestImageUrl');
                               await imgRef.set(data['image url']);
                               final audioURLProvider =
+                                  // ignore: use_build_context_synchronously
                                   Provider.of<AudioURLProvider>(context,
                                       listen: false);
 
                               audioURLProvider.updateURL(data['audio url']);
+                              // ignore: use_build_context_synchronously
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -152,7 +158,7 @@ class _SessionsGridPageState extends State<SessionsGridPage> {
                                             },
                                           ),
                                         )
-                                      : Center(
+                                      : const Center(
                                           child: CircularProgressIndicator(),
                                         ),
                                   Positioned(
@@ -172,7 +178,7 @@ class _SessionsGridPageState extends State<SessionsGridPage> {
                                         child: Text(
                                           decodeTimestamp(doc
                                               .id), // Decode the document's ID to display the timestamp
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 16.0,
                                               color: Colors.white),
                                         ),

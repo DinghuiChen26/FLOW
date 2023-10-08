@@ -1,5 +1,7 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+// import 'package:firebase_storage/firebase_storage.dart';
 
 class AudioURLProvider with ChangeNotifier {
   String _audioURL = '';
@@ -8,7 +10,6 @@ class AudioURLProvider with ChangeNotifier {
 
   void updateURL(String newURL) {
     _audioURL = newURL;
-    print("updated");
     notifyListeners();
   }
 }
@@ -21,7 +22,6 @@ class ImageURLProvider with ChangeNotifier {
 
   void updateURL(String newURL) {
     _imageURL = newURL;
-    print("updated");
     notifyListeners();
   }
 }
@@ -34,7 +34,6 @@ class PromptProvider with ChangeNotifier {
 
   void updatePrompt(String new_prompt) {
     _prompt = new_prompt;
-    print("updated");
     notifyListeners();
   }
 }

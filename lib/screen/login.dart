@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, unused_import
 
 import 'package:flow_app/main.dart';
 import 'package:flow_app/screen/image_card.dart';
@@ -10,6 +10,8 @@ import 'dart:math';
 import 'package:firebase_database/firebase_database.dart';
 
 class StartPage extends StatelessWidget {
+  const StartPage({super.key});
+
   // Future<void> uploadRandomNumberToFirebase(String randomNumber) async {
   //   final databaseReference = FirebaseDatabase.instance.reference();
   //   await databaseReference
@@ -61,13 +63,13 @@ class StartPage extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) =>
-                          MyHomePage(), // Use the Firebase URL here
+                          const MyHomePage(), // Use the Firebase URL here
                     ),
                   );
                 },
-                child: Text('Create'),
+                child: const Text('Create'),
               ),
-              SizedBox(height: 20), // Provides some spacing between the buttons
+              const SizedBox(height: 20), // Provides some spacing between the buttons
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
@@ -88,7 +90,7 @@ class StartPage extends StatelessWidget {
                     ),
                   );
                 },
-                child: Text('History'),
+                child: const Text('History'),
               ),
             ],
           ),
