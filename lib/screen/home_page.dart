@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+//TODO next button future wait for permission
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import 'package:webview_flutter/webview_flutter.dart';
@@ -43,9 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   bool _isTextFieldEnabled = true;
 
   Future<String> fetchImageFromAPI(String prompt) async {
-    // final promptProvider = Provider.of<PromptProvider>(context, listen: false);
 
-    // promptProvider.updatePrompt(prompt);
 
     final url =
         "https://6cac3gr7opzffdhsul272khe6y0bvhaf.lambda-url.eu-west-2.on.aws/";

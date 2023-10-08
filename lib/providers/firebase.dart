@@ -17,7 +17,7 @@ class AudioURLProvider with ChangeNotifier {
 class ImageURLProvider with ChangeNotifier {
   String _imageURL = '';
 
-  String get imageUrl => _imageURL;
+  String get imageURL => _imageURL;
 
   void updateURL(String newURL) {
     _imageURL = newURL;
