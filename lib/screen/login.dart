@@ -1,7 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flow_app/main.dart';
-import 'package:flow_app/screen/session_page.dart';
+import 'package:flow_app/screen/image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';

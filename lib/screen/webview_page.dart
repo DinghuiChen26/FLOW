@@ -1,5 +1,5 @@
 import 'package:flow_app/screen/login.dart';
-import 'package:flow_app/screen/session_page.dart';
+import 'package:flow_app/screen/image_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';

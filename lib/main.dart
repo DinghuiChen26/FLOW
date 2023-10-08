@@ -16,7 +16,7 @@ import 'screen/voice_guidance.dart';
 import 'screen/login.dart';
 import 'providers/firebase.dart'; // Make sure this import path is correct
 import 'package:provider/provider.dart';
-import 'screen/session_page.dart';
+import 'screen/image_card.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
