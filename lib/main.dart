@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
+import 'screen/session_page.dart';
 
 import 'package:flow_app/screen/home_page.dart';
+import 'package:flow_app/screen/session_page.dart';
 import 'package:flow_app/screen/webview_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'Poppins',
       ),
-      home: StartPage(),
+      home: SessionsGridPage(),
     );
   }
 }

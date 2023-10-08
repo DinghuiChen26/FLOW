@@ -1,5 +1,6 @@
 import 'package:flow_app/screen/login.dart';
 import 'package:flow_app/screen/image_card.dart';
+import 'package:flow_app/screen/session_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -73,10 +74,11 @@ class _WebViewPageState extends State<WebViewPage> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
+          onPressed: () async {
+            await jplayer.stop();
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ImageCardPage()),
+              MaterialPageRoute(builder: (context) => SessionsGridPage()),
             );
           },
           child: Icon(Icons.arrow_back, color: Colors.white),

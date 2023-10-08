@@ -51,6 +51,7 @@ dependencies:
   just_audio: ^0.9.35
   sensors_plus: ^3.0.3
   cloud_firestore: ^4.9.3
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

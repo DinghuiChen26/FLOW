@@ -5,6 +5,7 @@ import 'package:flow_app/providers/firebase.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
+import 'package:intl/intl.dart'; // Import the intl package
 import 'package:path_provider/path_provider.dart';
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:googleapis/texttospeech/v1.dart' as tts;
@@ -62,7 +63,14 @@ class _GuidancePageState extends State<GuidancePage> {
     final String imageUrl = imageUrlProvider.imageURL;
     final String prompt = promptProvider.prompt;
 
-    final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
+    final DateTime now = DateTime.now();
+    final String year = now.year.toString();
+    final String month = now.month.toString().padLeft(2, '0');
+    final String day = now.day.toString().padLeft(2, '0');
+    final String hour = now.hour.toString().padLeft(2, '0');
+    final String minute = now.minute.toString().padLeft(2, '0');
+
+    final String timestamp = '$year$month$day$hour$minute';
 
     final CollectionReference sessions =
         FirebaseFirestore.instance.collection('sessions');
@@ -360,7 +368,6 @@ class _GuidancePageState extends State<GuidancePage> {
                   onPressed: _isLoading
                       ? null
                       : () async {
-                          
                           setState(() {
                             _isLoading = true;
                             bool _isTextFieldEnabled = true;
